@@ -52,4 +52,8 @@ func main() {
     (*tp).p()
     (*tp).Shift4()
     (*tp).p()
+
+    var f = (*T).Shift4
+    f(&t)
+    t.p()
 }
