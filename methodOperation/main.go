@@ -62,4 +62,13 @@ func main() {
     var f = (*T).Shift4
     f(&t)
     t.p()
+
+    // ok
+    (&T{3,4}).pp()
+    (&T{3,4}).p()
+
+    // error
+    //(T{3,4}).pp()
+    // ok
+    (T{3,4}).p()
 }
