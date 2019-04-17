@@ -22,6 +22,12 @@ func (t T) pt() {
     fmt.Printf("%[1]T %[1]v\n", t)
 }
 
+/*
+// will make redeclare compile error
+func (t *T) pt() {
+    fmt.Printf("%[1]T %[1]v\n", t)
+}*/
+
 func (t *T) Shift4() {
     (*t).I <<= 1
     (*t).J <<= 1
