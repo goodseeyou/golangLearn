@@ -22,6 +22,17 @@ func (t T) pt() {
     fmt.Printf("%[1]T %[1]v\n", t)
 }
 
+
+func (T) pT() {
+    fmt.Printf("TT\n")
+}
+
+/*
+// will make redeclare compile error
+func (t *T) pt() {
+    fmt.Printf("%[1]T %[1]v\n", t)
+}*/
+
 func (t *T) Shift4() {
     (*t).I <<= 1
     (*t).J <<= 1
@@ -34,6 +45,8 @@ func (t *T) Shift4() {
 }
 
 func main() {
+    T{0,0}.pT()
+
     var t = T{1,2}
     t.p()
     t.Shift4()
@@ -56,4 +69,16 @@ func main() {
     var f = (*T).Shift4
     f(&t)
     t.p()
+
+    // ok
+    (&T{3,4}).pp()
+    (&T{3,4}).p()
+
+    // error
+    //(T{3,4}).pp()
+    // ok
+    (T{3,4}).p()
+
+    pf := T.p
+    pf(T{123,321})
 }
