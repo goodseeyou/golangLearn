@@ -10,25 +10,20 @@ const fileName = "data/eatTime.txt"
 
 func main() {
 	r := gin.Default()
-	r.GET("/ping", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{
-			"message": "pong",
-		})
-	})
 
-    r.GET("/lastEatTime", func(c *gin.Context) {
+    r.GET("/api/lastEatTime", func(c *gin.Context) {
         c.JSON(http.StatusOK, gin.H{
             "timeStamp": loadLastTime(),
             "now": time.Now().Unix(),
         })
     })
 
-    r.GET("/eat", func(c *gin.Context) {
+    r.GET("/api/eat", func(c *gin.Context) {
         err := writeLastTime()
         if err != nil { panic(err) }
         c.JSON(http.StatusOK, gin.H{})
     })
-	r.Run() // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
+	r.Run(":80") // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
 }
 
 func loadLastTime() int64 {
