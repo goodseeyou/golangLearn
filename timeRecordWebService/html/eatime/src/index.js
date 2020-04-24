@@ -64,7 +64,7 @@ class App extends React.Component {
     }
 
     updateLastEatTimeDiffSeconds(){
-        fetch(getLastTimeApi).then((res) => {
+        fetch(getLastTimeApi, {mode:'no-cors'}).then((res) => {
             return res.json();
         }).then((data) => {
             this.setState({lastEatTimestamp: parseInt(data['timeStamp'])});
