@@ -12,6 +12,7 @@ func main() {
 	r := gin.Default()
 
     r.GET("/api/lastEatTime", func(c *gin.Context) {
+        c.Header("Access-Control-Allow-Origin","*")
         c.JSON(http.StatusOK, gin.H{
             "timeStamp": loadLastTime(),
             "now": time.Now().Unix(),
@@ -19,6 +20,7 @@ func main() {
     })
 
     r.GET("/api/eat", func(c *gin.Context) {
+        c.Header("Access-Control-Allow-Origin","*")
         err := writeLastTime()
         if err != nil { panic(err) }
         c.JSON(http.StatusOK, gin.H{})
