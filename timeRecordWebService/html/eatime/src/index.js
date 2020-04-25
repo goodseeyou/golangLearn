@@ -81,7 +81,7 @@ class App extends React.Component {
                     <div className="header">
                         <div className="time diff container">{this.state.timeDiffString}</div>
                     </div>
-                    <div style={{height: "500px", display: "block"}}></div>
+                    <div style={{height: "350px", display: "block"}}></div>
                     <EatButton />
                 </div>
             </div>
